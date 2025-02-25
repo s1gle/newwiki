@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Моя Вики</title>
+  <style>
+    /* Общий стиль */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+    }
+
+    /* Меню навигации */
+    nav {
+      width: 200px;
+      background-color: #f4f4f4;
+      border-right: 1px solid #ddd;
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      margin: 0 0 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+      padding: 5px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #ddd;
+    }
+
+    /* Контент */
+    #content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    /* Адаптивность для мобильных устройств */
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+
+      nav {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Заголовок -->
+  <header>
+    <h1>Моя Персональная Вики</h1>
+  </header>
+
+  <!-- Основной контент -->
+  <main>
+    <!-- Навигация -->
+    <nav>
+      <ul>
+        <li><a href="#" onclick="showPage('about')">О проекте</a></li>
+        <li><a href="#" onclick="showPage('goals')">Цели</a></li>
+        <li><a href="#" onclick="showPage('notes')">Заметки</a></li>
+        <li><a href="#" onclick="showPage('contacts')">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <!-- Контейнер для основного контента -->
+    <div id="content">
+      <h2>Добро пожаловать!</h2>
+      <p>Это ваш персональный, адаптивный сайт-вики. Вы можете настраивать его под себя, добавлять заметки и сохранять важную информацию.</p>
+      <p>Выберите элемент из меню слева, чтобы начать.</p>
+    </div>
+  </main>
+  
+  <!-- Скрипт JavaScript -->
+  <script>
+    // Простая навигация по страницам
+    function showPage(page) {
+      const content = document.getElementById('content');
+      let html = '';
+
+      if (page === 'about') {
+        html = `
+          <h2>О проекте</h2>
+          <p>Этот сайт служит для организации ваших личных заметок, идей и другой информации.</p>
+          <p>Создавайте свои собственные странички, редактируйте их и делайте структуру сайта удобной для вас.</p>
+        `;
+      } else if (page === 'goals') {
+        html = `
+          <h2>Цели</h2>
+          <ul>
+            <li>Собрать полезные материалы и идеи</li>
+            <li>Создать личный план развития</li>
+            <li>Отслеживать выполнение задач</li>
+          </ul>
+        `;
+      } else if (page === 'notes') {
+        html = `
+          <h2>Заметки</h2>
+          <p>Это место для ваших заметок. Вы можете писать здесь любую информацию.</p>
+        `;
+      } else if (page === 'contacts') {
+        html = `
+          <h2>Контакты</h2>
+          <p>Добавьте сюда свои контакты или важные ссылки:</p>
+          <ul>
+            <li>Email: <a href="mailto:example@example.com">example@example.com</a></li>
+            <li>Telegram: <a href="https://t.me/yourusername">@yourusername</a></li>
+            <li>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></li>
+          </ul>
+        `;
+      } else {
+        html = `<h2>Раздел не найден</h2>`;
+      }
+
+      // Обновляем контент
+      content.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
